@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="fr-FR">
+
+    <head>
+        <meta charset="UTF-8">
+        <title>Supporters Solidaires</title>
+        <link rel="stylesheet" href="./css/style.css" type="text/css">
+    </head>
+        
+    <body>
+        <header>
+            <h1>Supporters Solidaires</h1>
+            
+            <nav>
+                
+                <ul>
+                    <li><a href="home.html">Accueil</a></li>
+                    <li><a href="jeu.html">Jeu concours</a></li>
+                    <li><a href="elections.html">Élections</a></li>
+                    <li><a href="identification.html">S'identifier</a></li>
+                </ul>
+                <div class="burger">
+                    <span></span>
+                </div>
+            </nav>
+        </header>
+
+        <section>
+            <h1>- Votez pour le joueur et le gardien du match -</h1>
+
+            <div class="global">
+                <div class="groupe">
+                    <h2>Liste des joueurs</h2>
+                    <form id="form">
+                        <li>
+                            <input type="radio" id="joueur1" name="joueur"/>
+                            <label for="joueur">J1</label>
+                        </li>
+
+                        <li>
+                            <input type="radio" id="joueur2" name="joueur"/>
+                            <label for="joueur">J2</label>
+                        </li>
+
+                        <li>
+                            <input type="radio" id="joueur3" name="joueur"/>
+                            <label for="joueur">J3</label>
+                        </li>
+
+                        <input type="submit" value="Voter" onclick="checkPassJoueur()"/>
+                        
+                    </form>
+                </div>
+
+                <div class="groupe">
+                    <h2>Liste des gardiens</h2>
+                    <form id="form1">
+                        <li>
+                            <input type="radio" id="gardien1" name="gardien"/>
+                            <label for="gardien">G1</label>
+                        </li>
+
+                        <li>
+                            <input type="radio" id="gardien2" name="gardien"/>
+                            <label for="gardien">G2</label>
+                        </li>
+
+                        <input type="submit" value="Voter" onclick="checkPassGardien()"/>
+
+                    </form>
+                </div>
+                
+            </div>
+
+        </section>
+
+        <footer>
+            <p>2022 &copy; Supporters Solidaires - Tous Droits Réservés - <a href="mailto:t.akpweh@gmail.com" target="_self">Nous contacter</a></p>
+        </footer>
+
+        <script src="./js/script.js"></script>
+    </body>
+</html>

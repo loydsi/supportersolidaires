@@ -1,0 +1,148 @@
+#------------------------------------------------------------
+#        Script MySQL.
+#------------------------------------------------------------
+
+
+#------------------------------------------------------------
+# Table: Role
+#------------------------------------------------------------
+
+CREATE TABLE Role(
+        ID_R  Int  Auto_increment  NOT NULL ,
+        NOM_R Varchar (50) NOT NULL
+	,CONSTRAINT Role_PK PRIMARY KEY (ID_R)
+)ENGINE=InnoDB;
+
+
+#------------------------------------------------------------
+# Table: Rencontre
+#------------------------------------------------------------
+
+CREATE TABLE Rencontre(
+        ID_M    Int  Auto_increment  NOT NULL ,
+        DATE_M  Date NOT NULL ,
+        HEURE_M Time NOT NULL
+	,CONSTRAINT Rencontre_PK PRIMARY KEY (ID_M)
+)ENGINE=InnoDB;
+
+
+#------------------------------------------------------------
+# Table: User
+#------------------------------------------------------------
+
+CREATE TABLE User(
+        ID_U     Int  Auto_increment  NOT NULL ,
+        NOM_U    Varchar (50) NOT NULL ,
+        PRENOM_U Varchar (50) NOT NULL ,
+        MAIL_U   Varchar (50) ,
+        MDP_U    Varchar (255)
+	,CONSTRAINT User_PK PRIMARY KEY (ID_U)
+)ENGINE=InnoDB;
+
+
+#------------------------------------------------------------
+# Table: Equipe
+#------------------------------------------------------------
+
+CREATE TABLE Equipe(
+        ID_E  Int  Auto_increment  NOT NULL ,
+        NOM_E Varchar (50) NOT NULL
+	,CONSTRAINT Equipe_PK PRIMARY KEY (ID_E)
+)ENGINE=InnoDB;
+
+
+#------------------------------------------------------------
+# Table: Joueur
+#------------------------------------------------------------
+
+CREATE TABLE Joueur(
+        ID_J     Int  Auto_increment  NOT NULL ,
+        NOM_J    Varchar (50) NOT NULL ,
+        PRENOM_J Varchar (50) NOT NULL ,
+        ID_R     Int NOT NULL ,
+        ID_E     Int NOT NULL
+	,CONSTRAINT Joueur_PK PRIMARY KEY (ID_J)
+
+	,CONSTRAINT Joueur_Role_FK FOREIGN KEY (ID_R) REFERENCES Role(ID_R) ON DELETE CASCADE
+	,CONSTRAINT Joueur_Equipe0_FK FOREIGN KEY (ID_E) REFERENCES Equipe(ID_E) ON DELETE CASCADE
+)ENGINE=InnoDB;
+
+
+#------------------------------------------------------------
+# Table: Vote
+#------------------------------------------------------------
+
+CREATE TABLE Vote(
+        ID_V Int  Auto_increment  NOT NULL ,
+        VOTE Int NOT NULL ,
+        ID_U Int NOT NULL ,
+        ID_M Int NOT NULL ,
+        ID_J Int NOT NULL
+	,CONSTRAINT Vote_PK PRIMARY KEY (ID_V)
+
+	,CONSTRAINT Vote_User_FK FOREIGN KEY (ID_U) REFERENCES User(ID_U) ON DELETE CASCADE
+	,CONSTRAINT Vote_Rencontre0_FK FOREIGN KEY (ID_M) REFERENCES Rencontre(ID_M) ON DELETE CASCADE
+	,CONSTRAINT Vote_Joueur1_FK FOREIGN KEY (ID_J) REFERENCES Joueur(ID_J) ON DELETE CASCADE
+)ENGINE=InnoDB;
+
+
+#------------------------------------------------------------
+# Table: participe
+#------------------------------------------------------------
+
+CREATE TABLE participe(
+        ID_M Int NOT NULL ,
+        ID_U Int NOT NULL ,
+        ID_C Int AUTO_INCREMENT NOT NULL
+	,CONSTRAINT participe_PK PRIMARY KEY (ID_C)
+
+	,CONSTRAINT participe_Rencontre_FK FOREIGN KEY (ID_M) REFERENCES Rencontre(ID_M) ON DELETE CASCADE
+	,CONSTRAINT participe_User0_FK FOREIGN KEY (ID_U) REFERENCES User(ID_U) ON DELETE CASCADE
+)ENGINE=InnoDB;
+
+
+#------------------------------------------------------------
+# Table: possède
+#------------------------------------------------------------
+
+CREATE TABLE possede(
+        ID_U Int NOT NULL ,
+        ID_R Int NOT NULL ,
+        ID_P Int AUTO_INCREMENT NOT NULL
+	,CONSTRAINT possede_PK PRIMARY KEY (ID_P)
+
+	,CONSTRAINT possede_User_FK FOREIGN KEY (ID_U) REFERENCES User(ID_U) ON DELETE CASCADE
+	,CONSTRAINT possede_Role0_FK FOREIGN KEY (ID_R) REFERENCES Role(ID_R) ON DELETE CASCADE
+)ENGINE=InnoDB;
+
+
+#------------------------------------------------------------
+# Table: dispute
+#------------------------------------------------------------
+
+CREATE TABLE dispute(
+        ID_E           Int NOT NULL ,
+        ID_M_Rencontre Int NOT NULL ,
+        ID_M           Int AUTO_INCREMENT NOT NULL
+	,CONSTRAINT dispute_PK PRIMARY KEY (ID_M)
+
+	,CONSTRAINT dispute_Equipe_FK FOREIGN KEY (ID_E) REFERENCES Equipe(ID_E) ON DELETE CASCADE
+	,CONSTRAINT dispute_Rencontre0_FK FOREIGN KEY (ID_M_Rencontre) REFERENCES Rencontre(ID_M) ON DELETE CASCADE
+)ENGINE=InnoDB;
+
+
+#------------------------------------------------------------
+# Table: joue
+#------------------------------------------------------------
+
+CREATE TABLE joue(
+        ID_J Int NOT NULL ,
+        ID_M Int NOT NULL ,
+        ID_A Int AUTO_INCREMENT NOT NULL
+	,CONSTRAINT joue_PK PRIMARY KEY (ID_A)
+
+	,CONSTRAINT joue_Joueur_FK FOREIGN KEY (ID_J) REFERENCES Joueur(ID_J) ON DELETE CASCADE
+	,CONSTRAINT joue_Rencontre0_FK FOREIGN KEY (ID_M) REFERENCES Rencontre(ID_M) ON DELETE CASCADE
+)ENGINE=InnoDB;
+
+

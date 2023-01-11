@@ -1,0 +1,32 @@
+-- A ajouter lors de l'inscription -- 
+1- Récupérer l'id_u OK
+2- Rentrer l'id_u avec le role 'Utilisateur' dans la table possède OK
+3- Rentrer l'id_j et l'id_m dans la table joue OK
+4- Remplir la table participe lorque qu'un user dans la page concours.php clique sur 'je participe'
+
+-- PARCOURS UTILISATEUR -- 
+1- Page accueil
+2- Je veux participer au jeu ou aux élections
+3- Je dois m'inscrire ou me connecter 
+4- Une fois ma connexion valider je peux :
+    4.1- Participer au concours en cliquant sur participer pour le match
+    4.2- Participer au vote en cliquant sur voter pour le match
+5- Je me modifier mes données de mo ncompte ou supprimer mon compte
+
+-- PARCOURS ADMIN -- 
+1- Page d'accueil
+2- Je rentre les données qui s'afficherons pour les utilisateurs
+2.1- Je crée les équipes ok
+2.2- Je crée les rencontres de telle et telle équipe à telle date et telle heure ok
+2.3- Je rentre les joueurs et les gardiens de chaque équipe ok
+3- Je peux récupérer différents fichiers 
+3.1- La liste des équipes 
+3.2- Le liste des joueurs
+4- Je peux aller sur la page de jeu concours
+4.1- Pour récupérer la liste des participants pour chaque match
+4.2- Pour tirer au sort 2 noms de la BDD
+5- Je peux aller sur la page de vote pour afficher qui le résultat du meilleur joueur et du meilleur gardien 
+
+-- PLUS -- 
+1- Ajouter les normes RGPD en pied de page
+2- Faire tout le CSS
